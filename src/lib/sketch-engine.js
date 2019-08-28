@@ -5,81 +5,112 @@ import SketchEngine from './sketch-engine'
 export default {
   corpra: [
     {
-      language: 'Korean',
-      name: 'CHILDES Korean Corpus',
-      words: 36056,
-      code: 'childes_kor',
-      note: 'Spoken.'
-    },
-    {
-      language: 'Korean',
-      name: 'Korean Web 2012 (koTenTen12)',
-      words: 461196240,
-      code: 'kotenten12',
-      note: 'Web.'
-    },
-    {
-      language: 'Korean',
-      name: 'Korean Web 2018 (koTenTen18)',
-      words: 1668851720,
-      code: 'kotenten18',
+      language: 'Japanese',
+      name: 'Japanese Web 2011 (jaTenTen11)',
+      words: 8432256578,
+      code: 'jptenten11_suw_comainu_v2',
       note: 'Featured.'
     },
     {
-      language: 'Korean',
-      name: 'OPUS2 Korean',
-      words: 374850,
-      code: 'opus2_ko',
+      language: 'Japanese',
+      name: 'CHILDES Japanese Corpus',
+      words: 1578068,
+      code: 'childes_jpn',
+      note: 'Spoken.'
+    },
+    {
+      language: 'Japanese',
+      name: 'Japanese Web (jpWaC)',
+      words: 336867039,
+      code: 'jpwac2',
+      note: 'Web.'
+    },
+    {
+      language: 'Japanese',
+      name: 'Japanese Web 2011 (jaTenTen11, sample)',
+      words: 301407652,
+      code: 'jptenten11_suw_comainu_v2_sample',
+      note: 'Web.'
+    },
+    {
+      language: 'Japanese',
+      name: 'Japanese Web 2011 sample (jaTenTen11, LUW)',
+      words: 163837671,
+      code: 'jptenten11_luw_sample',
+      note: 'Web.'
+    },
+    {
+      language: 'Japanese',
+      name: 'OPUS2 Japanese',
+      words: 5455106,
+      code: 'opus2_ja',
       note: 'Parallel. That means <b>English translation</b> is available.'
-    },
-    {
-      language: 'Korean',
-      name: 'Timestamped JSI web corpus 2014-2016 Korean',
-      words: 438816127,
-      code: 'kor_jsi_newsfeed_1',
-      note:
-        'Diachronic. That means the corpus has time information about when the text was published or used.'
-    },
-    {
-      language: 'Korean',
-      name: 'Timestamped JSI web corpus 2014-2019 Korean',
-      words: 1102664442,
-      code: 'kor_jsi_newsfeed_virt',
-      note:
-        'Diachronic. That means the corpus has time information about when the text was published or used.'
-    },
-    {
-      language: 'Korean',
-      name: 'Timestamped JSI web corpus 2019-05 Korean',
-      words: 24695254,
-      code: 'kor_jsi_newsfeed_lastmonth',
-      note:
-        'Diachronic. That means the corpus has time information about when the text was published or used.'
-    },
-    {
-      language: 'Korean',
-      name: 'Timestamped JSI web corpus 2019-06 Korean',
-      words: 22934151,
-      code: 'kor_jsi_newsfeed_curmonth',
-      note:
-        'Diachronic. That means the corpus has time information about when the text was published or used.'
     }
   ],
   corpname() {
-    return localStorage.getItem('kzhCorpname') || 'kotenten18'
+    return localStorage.getItem('jzhCorpname') || 'jptenten11_suw_comainu_v2'
   },
   collocationDescription(word) {
     return {
-      // adj_left: `adj_left`,
-      // adj_right: `adj_right`,
-      // adv_left: `adv_left`,
-      // adv_right: `adv_right`,
-      nextleft: `${word} ...`,
-      nextright: `... ${word}`,
-      // noun_left: `${word} (as modifier) + Noun`,
-      // noun_right: `Adjective + ${word}`,
-      // verb_left: `verb_left`,
-      // verb_right: `verb_right`
+      'noun/noun': `noun/noun`,
+      suffix: `suffix`,
+      particle: `particle`,
+      pronomの: `pronomの`,
+      のpronom: `のpronom`,
+      をverb: `をverb`,
+
+      にverb: `にverb`,
+      はverb: `はverb`,
+      がverb: `がverb`,
+      modifier_Ana: `modifier_Ana`,
+      coord: `coord`,
+      をverbする: `をverbする`,
+
+      がverbする: `がverbする`,
+      とverb: `とverb`,
+      Adn: `Adn`,
+      modifier_Ai: `modifier_Ai`,
+      はverbする: `はverbする`,
+      prefix: `prefix`,
+
+      へのpronom: `へのpronom`,
+      でverb: `でverb`,
+      にverbする: `にverbする`,
+      'modifier_N-Ana': `modifier_N-Ana`,
+      'N-Ana_modifies_N': `N-Ana_modifies_N`,
+      へverb: `へverb`,
+
+      modifier_Ano: `modifier_Ano`,
+      'modifier_N-Ai': `Ai`,
+      'N-Ai_modifies_N': `N-Ai_modifies_N`,
+      がAdj_cont: `がAdj_cont`,
+      からverb: `からverb`,
+      pronomとの: `pronomとの`,
+
+      とverbする: `とverbする`,
+      pronomへの: `pronomへの`,
+      'のAi+N': `のAi+N`,
+      pronomでの: `pronomでの`,
+      // NがのAi: `NがのAi`, // For some reason this Gramrel type does not have Word.cm
+      // 'Ai+1': `Ai+1`, // For some reason this Gramrel type does not have Word.cm
+
+      でverbする: `でverbする`,
+      pronomからの: `pronomからの`,
+      // 'N+Ai+N': `N+Ai+N`, // For some reason this Gramrel type does not have Word.cm
+      '-N-のAi+N': `-N-のAi+N`,
+      とのpronom: `とのpronom`,
+      がAdj_concl: `がAdj_concl`,
+
+      はAdj_concl: `はAdj_concl`,
+      からverbする: `からverbする`,
+      'がAi+N': `がAi+N`,
+      '-N-がAi+N': `-N-がAi+N`,
+      // 'NがのAi+1': `NがのAi+1`, // For some reason this Gramrel type does not have Word.cm
+      からのpronom: `からのpronom`,
+
+      modifier_Adj的: `modifier_Adj的`,
+      'Ai+2': `Ai+2`,
+      '2+Ai': `2+Ai`
     }
   },
   wsketch(term, callback) {
@@ -89,14 +120,14 @@ export default {
       }?https://api.sketchengine.eu/bonito/run.cgi/wsketch?corpname=preloaded/${this.corpname()}&lemma=${term}`,
       function(response) {
         if (response.data.Gramrels && response.data.Gramrels.length > 0) {
-          response.data.Gramrels.forEach(function(Gramrel) {
-            Gramrel.Words = Gramrel.Words.filter(function(Word) {
-              return Word.cm !== ''
-            })
+          for (let Gramrel of response.data.Gramrels) {
+            Gramrel.Words = Gramrel.Words.filter(Word => Word.cm !== '')
             for (let Word of Gramrel.Words) {
-              Word.cm = Word.cm.replace(/-\w( ?)/gi, '')
+              if (Word.cm) {
+                Word.cm = Word.cm.replace(/-\w( ?)/gi, '')
+              }
             }
-          })
+          }
         }
         callback(response.data)
       }
@@ -174,9 +205,7 @@ export default {
   },
   mistakes(term, callback) {
     $.post(
-      `${
-        Config.sketchEngineProxy
-      }?https://app.sketchengine.eu/bonito/run.cgi/concordance?corpname=preloaded/guangwai`,
+      `${Config.sketchEngineProxy}?https://app.sketchengine.eu/bonito/run.cgi/concordance?corpname=preloaded/guangwai`,
       {
         json: JSON.stringify({
           lpos: '',

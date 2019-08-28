@@ -52,7 +52,7 @@ export default {
   },
   watch: {
     corpname() {
-      localStorage.setItem('kzhCorpname', this.corpname)
+      localStorage.setItem('jzhCorpname', this.corpname)
       location.reload() // Otherwise users won't see the new collocations and example sentences, leaving them confused.
     }
   }

@@ -86,7 +86,7 @@ export default {
     }
   },
   mounted() {
-    let term = this.text.replace(/하?다$/, '') // remove final 다 to get all verb forms
+    let term = this.text
 
     SketchEngine.wsketch(term, response => {
       this.sketch = response

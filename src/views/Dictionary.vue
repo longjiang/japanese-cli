@@ -66,13 +66,13 @@
 
             <Collocations
               class="mt-5 mb-5"
-              :text="entry.kana"
-              :level="entry.hsk"
+              :text="entry.kanji"
+              :level="entry.level"
             ></Collocations>
             <Concordance
               class="mt-5 mb-5"
-              :text="entry.kana"
-              :level="entry.hsk"
+              :text="entry.kanji"
+              :level="entry.level"
             ></Concordance>
           </div>
         </div>
