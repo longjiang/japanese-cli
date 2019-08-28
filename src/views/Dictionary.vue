@@ -78,10 +78,10 @@
         </div>
         <div class="row">
           <div class="col-sm-12">
-            <Japanese
+            <Korean
               v-if="entry.kanji && entry.kanji !== 'NULL'"
               class="mt-5 mb-5"
-              :text="entry.kanji"
+              :text="entry.kyujitai"
             />
           </div>
         </div>
@@ -100,7 +100,7 @@ import EntryHeader from '@/components/EntryHeader.vue'
 import WebImages from '@/components/WebImages.vue'
 import SearchCompare from '@/components/SearchCompare.vue'
 import DefinitionsList from '@/components/DefinitionsList'
-import Japanese from '@/components/Japanese'
+import Korean from '@/components/Korean'
 import Paginator from '@/components/Paginator'
 import Helper from '@/lib/helper'
 
@@ -114,7 +114,7 @@ export default {
     EntryHeader,
     DefinitionsList,
     Paginator,
-    Japanese,
+    Korean,
     WebImages
   },
   props: {
@@ -143,9 +143,9 @@ export default {
     show(entry) {
       this.entryKey += 1
       this.entry = entry
-      document.title = `${entry.kana} (${
+      document.title = `${entry.kana} - ${
         entry.english
-      }) | Japanese Zero to Hero`
+      } | Japanese Zero to Hero`
     },
     route() {
       $('#japanesezerotohero')[0].scrollIntoView()

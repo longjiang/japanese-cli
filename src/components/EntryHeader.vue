@@ -7,15 +7,15 @@
           <Star :word="entry"></Star>
           <Speak class="ml-1" :text="entry.kana" />
         </div>
-        <div>
+        <div v-if="entry.kana && entry.kana !== 'NULL'" class="mt-1">
+          <span class="ml-2 entry-kanji">{{ entry.kana }}</span>
+        </div>
+        <div v-if="entry.kanji && entry.kanji !== 'NULL'">
           <a :href="`#/dictionary/EDict/${entry.id}`">
             <span class="entry-word" data-level="outside">{{
-              entry.kana
+              entry.kanji
             }}</span>
           </a>
-        </div>
-        <div v-if="entry.kanji && entry.kanji !== 'NULL'" class="mt-1">
-          <span class="ml-2 entry-kanji">{{ entry.kanji }}</span>
         </div>
       </div>
     </div>

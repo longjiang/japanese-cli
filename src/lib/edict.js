@@ -12,7 +12,10 @@ export default {
           this._data = results.data.sort((a, b) =>
             a.kana && b.kana ? a.kana.length - b.kana.length : 0
           )
-          resolve(this)
+          let kyujitai = new Kyujitai(error => {
+            this.kyujitai = kyujitai
+            resolve(this)
+          })
         }
       })
     })
@@ -25,7 +28,9 @@ export default {
     return uniqueArray
   },
   get(id) {
-    return this._data.find(row => row.id === id)
+    let entry = this._data.find(row => row.id === id)
+    entry.kyujitai = this.kyujitai.decode(entry.kanji)
+    return entry
   },
   isChinese(text) {
     if (this.matchChinese(text)) return true
