@@ -43,7 +43,11 @@
         <span>
           <span
             class="suggestion-word font-weight-bold mr-1"
-            data-hsk="outside"
+            data-level="outside"
+            >{{ suggestion.kanji }}</span
+          >
+          <span
+            class="mr-1"
             >{{ suggestion.kana }}</span
           >
           <span
