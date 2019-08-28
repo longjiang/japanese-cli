@@ -1,0 +1,71 @@
+<template>
+  <div class="chinese">
+    <div class="widget-title">Learning Chinese?</div>
+    <div class="jumbotron-fluid bg-light p-4">
+      <div v-if="words">
+        <div v-for="word in words">
+          <div>
+            The Chinese word
+            <b data-level="outside" class="bigger">{{ word.simplified }}</b>
+            [{{ word.traditional }}]
+            <span>({{ word.pinyin }})</span> [
+            means
+            <em>{{ word.definitions }}</em>.
+          </div>
+        </div>
+      </div>
+      <div v-if="words.length === 0">
+        We could not find any Chinese words with the
+        <em>hanja</em>
+        “{{ text }}.”
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import Config from '@/lib/config'
+import Helper from '@/lib/helper'
+
+export default {
+  props: {
+    text: {
+      type: String
+    }
+  },
+  data() {
+    return {
+      words: []
+    }
+  },
+  methods: {
+    loadVariants() {
+      Helper.loaded((LoadedEDict, LoadedHanzi, LoadedUnihan) => {
+        let variants = LoadedUnihan.variants(this.text)
+        for (let variant of variants) {
+          $.getJSON(
+            `${Config.wiki}items/kengdic?filter[hanja][eq]=${variant}`,
+            response => {
+              this.words = this.words.concat(response.data)
+            }
+          )
+        }
+      })
+    }
+  },
+  watch: {
+    text() {
+      if (this.text && this.words.length === 0) {
+        this.loadVariants()
+      }
+    }
+  },
+  mounted() {
+    if (this.text && this.words.length === 0) {
+      this.loadVariants()
+    }
+  }
+}
+</script>
+
+<style></style>

@@ -151,15 +151,13 @@ export default {
           var result = []
           for (let Line of data.Lines.slice(0, 500)) {
             let line =
-              Line.Left.map(item => (item ? item.str : '')).join(' ') +
-              ' ' +
+              Line.Left.map(item => (item ? item.str : '')).join('') +
               Line.Kwic[0].str +
-              ' ' +
               Line.Right.map(item => (item ? item.str : '')).join(' ')
             line = line.replace(/ ([,.])/g, '$1')
             if (line.length > term.length + 4) {
               let parallelLine = {
-                korean: line
+                japanese: line
               }
               if (Line.Align && Line.Align[0].Kwic) {
                 parallelLine.english = Line.Align[0].Kwic.map(
@@ -170,7 +168,7 @@ export default {
             }
           }
           result = result.sort(function(a, b) {
-            return a.korean.length - b.korean.length
+            return a.japanese.length - b.japanese.length
           })
           callback(Helper.unique(result))
         } catch (err) {
