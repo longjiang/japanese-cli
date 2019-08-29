@@ -22,11 +22,9 @@ export default {
 </script>
 
 <style>
-i.speak {
+.speak {
   cursor: pointer;
-  color: #ccc;
-  position: relative;
-  top: 0.2em;
+  color: #aaa;
 }
 
 .speak:hover {

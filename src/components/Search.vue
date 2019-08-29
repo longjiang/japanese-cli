@@ -131,7 +131,7 @@ export default {
       Helper,
       suggestions: [],
       dEntry: this.entry,
-      text: this.entry ? this.entry.kana : this.term,
+      text: this.entry ? this.entry.kanji : this.term,
       active: false,
       suggestionsKey: 0
     }
@@ -143,7 +143,7 @@ export default {
     entry() {
       if (this.entry) {
         this.dEntry = this.entry
-        this.text = this.dEntry.kana
+        this.text = this.dEntry.kanji
       }
     },
     text() {
