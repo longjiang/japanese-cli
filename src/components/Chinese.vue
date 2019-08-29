@@ -6,17 +6,26 @@
         <div v-for="word in words">
           <div>
             The Chinese word
-            <b data-level="outside" class="bigger">{{ word.simplified }}</b>
-            [{{ word.traditional }}]
-            <span>({{ word.pinyin }})</span> [
-            means
-            <em>{{ word.definitions }}</em>.
+            <a
+              :href="
+                `https://zh.zerotohero.ca/#/view/cedict/${
+                  word.traditional
+                },${word.pinyin.replace(/ /g, '_')},${word.index}`
+              "
+              target="_blank"
+              class="link-unstyled"
+            >
+              <b class="bigger" :data-level="word.hsk">{{ word.simplified }}</b>
+
+              [{{ word.traditional }}] <span>({{ word.pinyin }})</span></a
+            >
+            means <em>{{ word.definitions }}</em
+            >.
           </div>
         </div>
       </div>
       <div v-if="words.length === 0">
-        We could not find any Chinese words with the
-        <em>hanja</em>
+        We could not find any Chinese words with traditional characters matching
         “{{ text }}.”
       </div>
     </div>
@@ -44,7 +53,7 @@ export default {
         let variants = LoadedUnihan.variants(this.text)
         for (let variant of variants) {
           $.getJSON(
-            `${Config.wiki}items/kengdic?filter[hanja][eq]=${variant}`,
+            `${Config.wiki}items/hsk_cedict?filter[traditional][eq]=${variant}`,
             response => {
               this.words = this.words.concat(response.data)
             }

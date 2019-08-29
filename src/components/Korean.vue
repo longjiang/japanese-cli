@@ -6,9 +6,18 @@
         <div v-for="word in words">
           <div>
             The Korean word
-            <b>{{ word.hangul }}</b> [
-            <b data-level="outside" class="bigger">{{ word.hanja }}</b>] means
-            <em>{{ word.english }}</em>.
+            <a
+              :href="`https://ko.zerotohero.ca/#/dictionary/kengdic/${word.kid}`"
+              class="link-unstyled"
+              target="_blank"
+              ><b>{{ word.hangul }}</b> [<b
+                data-level="outside"
+                class="bigger"
+                >{{ word.hanja }}</b
+              >]</a
+            >
+            means <em>{{ word.english }}</em
+            >.
           </div>
         </div>
       </div>

@@ -77,10 +77,17 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-12">
+          <div class="col-sm-6">
             <Korean
               v-if="entry.kanji && entry.kanji !== 'NULL'"
-              class="mt-5 mb-5"
+              class="mb-5"
+              :text="entry.kyujitai"
+            />
+          </div>
+          <div class="col-sm-6">
+            <Chinese
+              v-if="entry.kanji && entry.kanji !== 'NULL'"
+              class="mb-5"
               :text="entry.kyujitai"
             />
           </div>
@@ -101,6 +108,7 @@ import WebImages from '@/components/WebImages.vue'
 import SearchCompare from '@/components/SearchCompare.vue'
 import DefinitionsList from '@/components/DefinitionsList'
 import Korean from '@/components/Korean'
+import Chinese from '@/components/Chinese'
 import Paginator from '@/components/Paginator'
 import Helper from '@/lib/helper'
 
@@ -115,6 +123,7 @@ export default {
     DefinitionsList,
     Paginator,
     Korean,
+    Chinese,
     WebImages
   },
   props: {
