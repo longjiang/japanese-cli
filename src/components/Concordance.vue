@@ -52,7 +52,7 @@
 
         <a
           :href="
-            `http://www.jukuu.com/search.php?q=${encodeURIComponent(text)}`
+            `http://www.jukuu.com/exhibit-${encodeURIComponent(text)}-0.html`
           "
           class="mr-4"
           target="_blank"
@@ -62,7 +62,7 @@
         </a>
         <a
           :href="
-            `https://www.linguee.com/english-chinese/search?source=auto&query=${text}`
+            `https://www.linguee.com/english-japanese/search?query=${text}`
           "
           target="_blank"
         >
