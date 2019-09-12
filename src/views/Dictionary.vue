@@ -59,7 +59,7 @@
 
             <WebImages
               class="mt-5"
-              :text="entry.kana"
+              :text="entry.kanji"
               :entry="entry"
               limit="10"
             ></WebImages>
@@ -152,7 +152,7 @@ export default {
     show(entry) {
       this.entryKey += 1
       this.entry = entry
-      document.title = `${entry.kana} - ${
+      document.title = `${entry.kanji} - ${
         entry.english
       } | Japanese Zero to Hero`
     },
